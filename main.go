@@ -41,7 +41,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", 301)
 	} else {
 		http.ServeFile(w, r, "templates/student.html")
-		//////fmt.Println(mysql.LastInsertId())
+		//////////fmt.Println(mysql.LastInsertId())
 	}
 }
 
