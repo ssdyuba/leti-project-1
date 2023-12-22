@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Поступление в ВУЗ</title>
+    </head>
+    <body>
+        <style type="text/css"> 
+            button[name="ticket"] { 
+              border: none;
+              border-radius: 7px;
+              padding: 10px 25px;
+              background: #b46c00;
+              cursor: pointer;
+              text-transform: uppercase;
+              font-weight: bold;
+              color: white;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            button[name="ticket"]:hover { 
+              background: #ff6600;
+            } 
+          </style>
+          <button type="button" name="ticket" onclick="document.location='/create'">Подать заявку</button>
+
+    <style type="text/css"> 
+        button[name="check_ticket"] { 
+          border: none;
+          border-radius: 7px;
+          padding: 10px 25px;
+          background: #b46c00;
+          cursor: pointer;
+          text-transform: uppercase;
+          font-weight: bold;
+          color: white;
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        button[name="check_ticket"]:hover { 
+          background: #ff6600;
+        } 
+      </style>
+      <button type="button" name="check_ticket" onclick="document.location='/create'">Посмотреть заявку</button>
+</body>
+</html>
