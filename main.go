@@ -33,7 +33,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		//specialization := r.FormValue("specialization")
 		//red :- r.FormValue("red")
 		document := r.FormValue("document")
-		_, err = database.Exec("INSERT INTO students (fio, place, document) values (?, ?, ?)",
+		database.Exec("INSERT INTO students (fio, place, document) values (?, ?, ?)",
 			fio, place, document)
 		if err != nil {
 			log.Println(err)
@@ -41,7 +41,6 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", 301)
 	} else {
 		http.ServeFile(w, r, "templates/student.html")
-		//fmt.Println(mysql.LastInsertId())
 	}
 }
 
