@@ -1,4 +1,4 @@
-package main
+/package main
 
 import (
 	//"fmt"
@@ -33,7 +33,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		//specialization := r.FormValue("specialization")
 		//red :- r.FormValue("red")
 		document := r.FormValue("document")
-		database.Exec("INSERT INTO students (fio, place, document) values (?, ?, ?)",
+		res, _ = database.Exec("INSERT INTO students (fio, place, document) values (?, ?, ?)",
 			fio, place, document)
 		if err != nil {
 			log.Println(err)
@@ -41,6 +41,12 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", 301)
 	} else {
 		http.ServeFile(w, r, "templates/student.html")
+		id, err := res.LastInsertId()
+		if err != nil {
+			println("Error:", err.Error())
+		} else {
+			println("LastInsertId:", id)
+		}
 	}
 }
 
