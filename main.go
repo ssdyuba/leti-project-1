@@ -29,7 +29,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		fio := r.FormValue("fio")
 		place := r.FormValue("place")
-		//////sex := r.FormValue("sex")
+		//sex := r.FormValue("sex")
 		//specialization := r.FormValue("specialization")
 		//red :- r.FormValue("red")
 		document := r.FormValue("document")
