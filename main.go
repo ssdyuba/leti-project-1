@@ -29,24 +29,18 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		fio := r.FormValue("fio")
 		place := r.FormValue("place")
-		///sex := r.FormValue("sex")
+		sex := r.FormValue("sex")
 		//specialization := r.FormValue("specialization")
 		//red :- r.FormValue("red")
 		document := r.FormValue("document")
-		res, _ = database.Exec("INSERT INTO students (fio, place, document) values (?, ?, ?)",
-			fio, place, document)
+		_, err = database.Exec("INSERT INTO students (fio, sex, place, document) values (?, ?, ?, ?)",
+			fio, sex, place, document)
 		if err != nil {
 			log.Println(err)
 		}
 		http.Redirect(w, r, "/", 301)
 	} else {
 		http.ServeFile(w, r, "templates/student.html")
-		id, err := res.LastInsertId()
-		if err != nil {
-			println("Error:", err.Error())
-		} else {
-			println("LastInsertId:", id)
-		}
 	}
 }
 
@@ -64,5 +58,6 @@ func main() {
 	defer db.Close()
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/create", CreateHandler)
+	//http.HandleFunc("/create", CreateHandler)
 	http.ListenAndServe(":8080", nil)
 }
