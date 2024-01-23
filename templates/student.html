@@ -16,7 +16,7 @@
               font-weight: bold;
               color: white;
               position: absolute;
-              top: 50%;
+              top: 70%;
               left: 50%;
               transform: translate(-50%, -50%);
         }
@@ -29,24 +29,45 @@
             margin: 8px 0;
             box-sizing: content-box;   
          }
+         select {
+                appearance: none;
+                /* safari */
+          -webkit-appearance: none;
+              /* other styles for aesthetics */
+           width: 5%;
+            font-size: 0.8rem;
+            padding: 0.675em 1em 0.675em 1em;
+             background-color: #fff;
+           border: 1px solid #caced1;
+          border-radius: 0.25rem;
+             color: #000;
+               cursor: pointer;
+                }
         </style>
     <body bgcolor="#c0c0c0">
         <center>
         <h3>Поступление в ВУЗ</h3>
         <form method="POST">
             <label>Фамилия, имя, отчество</label><br>
-            <input class="input" type="text" name="fio" pattern="[А-Яа-яЁё]" /><br><br>
-            <label>Пол</label><br>
-            <input type="text" name="sex" /><br><br>
-            <label>Место рождения</label><br>
-            <input class="input" type="text" name="place" pattern="[А-Яа-яЁё]" /><br><br>
-            <label>Документ</label><br>
-            <input type="text" name="document" /><br><br>
-            <label>Специализация</label><br>
-            <input type="text" name="specialization" /><br><br>
-            <label>Наличие красного диплома</label><br>
-            <input  type="text" name="red" /><br><br>
-            
+            <input class="input" type="text" name="fio"/><br><br>
+            <label>Дата рождения</label><br>
+            <input class="input" type="date" name="date"/><br><br>
+            <label>Оконченное среднее учебное заведение </label><br>
+            <input class="input" type="text" name="school" /><br><br>
+            <label>Дата окончания</label><br>
+            <input class="input" type="date" name="dateschoolend"/><br><br>
+            <label>Адрес</label><br>
+            <input class="input" type="text" name="addres" /><br><br>
+            <label>Специализация</label><br><br>
+            <select class="custom-select"  name="specialization">
+                <option value="False">Нет</option>
+                <option value="True">Есть</option>
+              </select><br><br>
+            <label>Наличие красного диплома</label><br><br>
+            <select class="custom-select"  name="red">
+                <option value="False">Нет</option>
+                <option value="True">Есть</option>
+              </select>
             <input class="buttonstyle"  type="submit" value="Отправить"/>
         </form>
     </center>

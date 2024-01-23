@@ -12,11 +12,14 @@ import (
 )
 
 type Product struct {
-	id    int
-	fio   string
-	place string
-	//document string
-	//sex string
+	id             int
+	fio            string
+	date           int
+	school         string
+	dateschoolend  int
+	addres         string
+	specialization string
+	red            string
 }
 
 var database *sql.DB
@@ -28,13 +31,14 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 		fio := r.FormValue("fio")
-		place := r.FormValue("place")
-		sex := r.FormValue("sex")
-		//specialization := r.FormValue("specialization")
-		//red :- r.FormValue("red")
-		document := r.FormValue("document")
-		_, err = database.Exec("INSERT INTO students (fio, sex, place, document) values (?, ?, ?, ?)",
-			fio, sex, place, document)
+		date := r.FormValue("date")
+		school := r.FormValue("school")
+		dateschoolend := r.FormValue("dateschoolend")
+		addres := r.FormValue("addres")
+		specialization := r.FormValue("specialization")
+		red := r.FormValue("red")
+		_, err = database.Exec("INSERT INTO students (fio, date, school, dateschoolend, addres, specialization, red) values (?, ?, ?, ?, ?, ?, ?)",
+			fio, date, school, dateschoolend, addres, specialization, red)
 		if err != nil {
 			log.Println(err)
 		}
@@ -44,7 +48,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func Index(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "templates/index.html")
 }
 
@@ -56,8 +60,8 @@ func main() {
 	}
 	database = db
 	defer db.Close()
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", Index)
 	http.HandleFunc("/create", CreateHandler)
-	///http.HandleFunc("/create", CreateHandler)
+	//http.HandleFunc("/create", CreateHandler)
 	http.ListenAndServe(":8080", nil)
 }
